@@ -1,0 +1,29 @@
+
+<div style="text-align : center;">
+    <h1><b>Users List</b></h1>
+</div>
+
+<div class="search" style="text-align : center;">
+    <input type="text" name="search" [(ngModel)]= "searchId" placeholder="Insert Id for search" />
+
+</div>
+
+    <ul> 
+        <li   *ngFor= "let user of users |filter:searchId">
+            <mat-card class="card-component">
+                <mat-card-header>
+                <mat-card-title style="padding-left: 50px; padding-bottom: 10px;">{{user.id}}</mat-card-title>
+                <mat-card-subtitle style="font-size: large;"><b>{{user.first_name}}  {{user.last_name}}</b></mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src={{user.avatar}}>
+                <mat-card-content>{{user.email}} </mat-card-content>
+            <mat-card-actions>
+             <nav>
+                <button [routerLink]= "['id',user.id]">Info</button>
+            </nav>
+            </mat-card-actions>
+          </mat-card>
+        </li>
+    </ul>
+<router-outlet></router-outlet>
+    
